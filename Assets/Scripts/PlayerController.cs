@@ -23,9 +23,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] CollisionDetection collision;
     [SerializeField] Vector2 moveInput;
 
-    [Header("Bool")]
-    public bool can_move;
-    public bool can_jump = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -47,10 +44,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (can_move)
-        {
-            Body.linearVelocityX = Mathf.Lerp(Body.linearVelocityX,targetSpeed, lerpValue);
-        }
+        Body.linearVelocityX = Mathf.Lerp(Body.linearVelocityX,targetSpeed, lerpValue);
     }
 
     public void OnMove(InputValue value)
@@ -60,16 +54,13 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputValue value)
     {
-        if (can_jump)
+        if (value.isPressed && Grounded)
         {
-            if (value.isPressed && Grounded)
-            {
-                Body.AddForceY(jumpForce, ForceMode2D.Impulse);
-            }
-            else if (!value.isPressed)
-            {
-                Body.gravityScale = fallGravity;
-            }
+            Body.AddForceY(jumpForce, ForceMode2D.Impulse);
+        }
+        else if (!value.isPressed)
+        {
+            Body.gravityScale = fallGravity;
         }
     }
 }
