@@ -13,7 +13,7 @@ public class AnimatorManager : MonoBehaviour
         if (XVelocity < 0) transform.localScale = new(-1, 1, 1);
         else transform.localScale = Vector3.one;
 
-        IsMoving = XVelocity != 0;
+        IsMoving = Mathf.Abs(XVelocity) > .15f;
     }
     
     public void PlayAnimation(AnimationClip clip)

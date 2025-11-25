@@ -169,7 +169,7 @@ MonoBehaviour:
   speed: 10
   targetSpeed: 0
   lerpValue: 0.25
-  jumpForce: 15
+  jumpForce: 17
   normalGravity: 3
   fallGravity: 6
   maxVerticalAcceleration: 15
